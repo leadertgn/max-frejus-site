@@ -1,4 +1,5 @@
 import { profil } from "../data";
+import { Link } from "react-router-dom";
 
 /** Pied de page : contact rapide, sur le fond sombre du héro pour fermer la page. */
 export default function Footer() {
@@ -8,7 +9,9 @@ export default function Footer() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1fr_auto]">
           <div>
             <p className="font-titre text-xl">{profil.nom}</p>
-            <p className="mt-1 max-w-[48ch] text-sm text-papier/70">{profil.titre}</p>
+            <p className="mt-1 max-w-[48ch] text-sm text-papier/70">
+              {profil.titre}
+            </p>
           </div>
 
           <dl className="space-y-3 text-sm">
@@ -49,9 +52,17 @@ export default function Footer() {
           </dl>
         </div>
 
-        <p className="mt-12 border-t border-papier/15 pt-6 text-xs text-papier/50">
-          © {new Date().getFullYear()} {profil.nom}
-        </p>
+        <div className="mt-12 flex flex-wrap items-baseline justify-between gap-4 border-t border-papier/15 pt-6 text-xs text-papier/50">
+          <p>
+            © {new Date().getFullYear()} {profil.nom}
+          </p>
+          <Link
+            to="/mentions-legales"
+            className="underline underline-offset-4 hover:text-lumiere"
+          >
+            Mentions légales
+          </Link>
+        </div>
       </div>
     </footer>
   );

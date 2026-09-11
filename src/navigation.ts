@@ -1,4 +1,4 @@
-/** Les 8 pages du site, dans l'ordre de la barre de navigation. */
+/** Les pages du site, dans l'ordre de la barre de navigation. */
 export const navigation = [
   { chemin: "/", libelle: "Accueil" },
   { chemin: "/a-propos", libelle: "À propos" },
