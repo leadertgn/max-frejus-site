@@ -42,8 +42,129 @@ body {
   animation: revele-trace 1.1s cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }
 
+@keyframes transition-page {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.route-transition {
+  animation: transition-page 250ms ease-out both;
+}
+
+@keyframes filtre-resultats {
+  from {
+    opacity: 0.35;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.filter-results-transition {
+  animation: filtre-resultats 150ms ease-out both;
+}
+
+.menu-mobile {
+  overflow: hidden;
+  transition:
+    max-height 200ms ease-out,
+    opacity 200ms ease-out,
+    transform 200ms ease-out;
+  transform-origin: top;
+}
+
+.menu-mobile-ouvert {
+  max-height: 30rem;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.menu-mobile-ferme {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+}
+
+@keyframes defile-partenaires {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-piste {
+  display: flex;
+  width: max-content;
+  animation: defile-partenaires 45s linear infinite;
+}
+
+.marquee-zone:hover .marquee-piste {
+  animation-play-state: paused;
+}
+
+.marquee-groupe {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+  padding-right: clamp(2rem, 6vw, 5rem);
+}
+
+.marquee-logo {
+  width: 10rem;
+  flex: 0 0 10rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .trace-revelee {
     animation: none;
+  }
+
+  .route-transition {
+    animation: none;
+  }
+
+  .filter-results-transition {
+    animation: none;
+  }
+
+  .menu-mobile {
+    transition: none;
+  }
+
+  .marquee-zone {
+    overflow: visible;
+  }
+
+  .marquee-piste {
+    display: grid;
+    width: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.5rem 2rem;
+    animation: none;
+  }
+
+  .marquee-groupe {
+    display: contents;
+  }
+
+  .marquee-groupe[aria-hidden="true"] {
+    display: none;
+  }
+
+  .marquee-logo {
+    width: auto;
+    flex: initial;
   }
 }

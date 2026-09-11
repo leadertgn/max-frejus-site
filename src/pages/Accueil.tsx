@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
 import FaisceauSignal from "../components/FaisceauSignal";
 import ProfilCard from "../components/ProfilCard";
+import PartenairesGrid from "../components/PartenairesGrid";
 import SectionTitle from "../components/SectionTitle";
-import { outilsSimulation, profil, publications, thematiquesRecherche } from "../data";
+import {
+  outilsSimulation,
+  profil,
+  publications,
+  thematiquesRecherche,
+} from "../data";
 
 /** Aperçu : les axes de recherche mis en avant sur l'accueil. */
 const APERCU_THEMATIQUES = 6;
@@ -10,7 +16,8 @@ const APERCU_THEMATIQUES = 6;
 export default function Accueil() {
   const accroche = profil.bio.split("\n\n")[0];
   const thematiquesEnAvant = thematiquesRecherche.slice(0, APERCU_THEMATIQUES);
-  const thematiquesRestantes = thematiquesRecherche.length - thematiquesEnAvant.length;
+  const thematiquesRestantes =
+    thematiquesRecherche.length - thematiquesEnAvant.length;
 
   return (
     <>
@@ -23,7 +30,9 @@ export default function Accueil() {
                 {profil.nom}
               </h1>
               <p className="mt-5 text-lg text-lumiere">{profil.titre}</p>
-              <p className="mt-8 max-w-[62ch] leading-relaxed text-papier/80">{accroche}</p>
+              <p className="mt-8 max-w-[62ch] leading-relaxed text-papier/80">
+                {accroche}
+              </p>
 
               <Link
                 to="/publications"
@@ -60,29 +69,29 @@ export default function Accueil() {
             chapeau="Communications optiques et sans fil à haut débit, de la couche physique au déploiement des réseaux d'accès."
           />
 
-          <ol className="mt-12 grid gap-x-12 gap-y-8 sm:grid-cols-2">
-            {thematiquesEnAvant.map((thematique, index) => (
+          <ul className="mt-12 grid gap-x-12 gap-y-8 sm:grid-cols-2">
+            {thematiquesEnAvant.map((thematique) => (
               <li
                 key={thematique.titre}
-                className="grid grid-cols-[2.5rem_1fr] border-t border-petrole/20 pt-4"
+                className="border-t border-petrole/20 pt-4"
               >
-                <span className="font-titre text-sm text-lumiere">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <h3 className="font-titre text-lg leading-snug text-nuit">{thematique.titre}</h3>
-                  {thematique.description && (
-                    <p className="mt-1 max-w-[46ch] text-sm text-encre">{thematique.description}</p>
-                  )}
-                </div>
+                <h3 className="font-titre text-lg leading-snug text-nuit">
+                  {thematique.titre}
+                </h3>
+                {thematique.description && (
+                  <p className="mt-1 max-w-[46ch] text-sm text-encre">
+                    {thematique.description}
+                  </p>
+                )}
               </li>
             ))}
-          </ol>
+          </ul>
 
           <div className="mt-12 flex flex-wrap items-baseline justify-between gap-6">
             <p className="max-w-[52ch] text-sm text-encre">
               Travaux conduits sous {outilsSimulation.join(", ")}.
-              {thematiquesRestantes > 0 && ` ${thematiquesRestantes} autres axes sont détaillés sur la page recherche.`}
+              {thematiquesRestantes > 0 &&
+                ` ${thematiquesRestantes} autres axes sont détaillés sur la page recherche.`}
             </p>
             <Link
               to="/recherche"
@@ -90,6 +99,18 @@ export default function Accueil() {
             >
               Tous les axes de recherche
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-petrole/15">
+        <div className="mx-auto max-w-6xl px-6 py-20 lg:px-10">
+          <SectionTitle
+            titre="Partenaires"
+            chapeau="Institutions, laboratoires et réseaux associés aux travaux et aux projets menés avec les étudiants."
+          />
+          <div className="mt-12">
+            <PartenairesGrid />
           </div>
         </div>
       </section>

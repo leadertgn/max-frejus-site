@@ -8,18 +8,19 @@ export default function Recherche() {
         <SectionTitle
           titre="Recherche"
           niveau="h1"
-          chapeau="Axes de recherche en communications optiques, réseaux et traitement du signal."
+          chapeau={`${thematiquesRecherche.length} axes couvrant l'OFDM optique, les réseaux PON, les communications LiFi et le traitement du signal, avec ${outilsSimulation.length} outils de simulation.`}
         />
 
-        <ol className="mt-12 grid gap-x-12 gap-y-8 sm:grid-cols-2">
-          {thematiquesRecherche.map((thematique, index) => (
+        <ul className="mt-12 grid gap-x-12 gap-y-8 sm:grid-cols-2">
+          {thematiquesRecherche.map((thematique) => (
             <li
               key={thematique.titre}
-              className="grid grid-cols-[2.5rem_1fr] border-t border-petrole/20 pt-4"
+              className="grid grid-cols-[1rem_1fr] gap-3 border-t border-petrole/20 pt-4"
             >
-              <span className="font-titre text-sm text-lumiere">
-                {String(index + 1).padStart(2, "0")}
-              </span>
+              <span
+                aria-hidden="true"
+                className="mt-2 h-2 w-2 rounded-full bg-lumiere"
+              />
               <div>
                 <h2 className="font-titre text-lg leading-snug text-nuit">
                   {thematique.titre}
@@ -32,7 +33,7 @@ export default function Recherche() {
               </div>
             </li>
           ))}
-        </ol>
+        </ul>
       </section>
 
       <section className="border-t border-petrole/15">

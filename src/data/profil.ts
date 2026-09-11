@@ -3,7 +3,7 @@ import type { Profil } from "../types";
 export const profil: Profil = {
   nom: "Max Fréjus O. SANYA, PhD",
   titre: "Maître de Conférences des Universités du CAMES",
-  photo: "/images/max-frejus-sanya.jpg", // TODO : récupérer la photo auprès du Dr SANYA
+  photo: "/images/max-frejus-sanya.png", // TODO : récupérer la photo auprès du Dr SANYA
   postes: [
     "Associate Professor à l'EPAC / Université d'Abomey-Calavi, Bénin",
     "Chef adjoint du département Génie Informatique et Télécommunications (GIT/EPAC)",

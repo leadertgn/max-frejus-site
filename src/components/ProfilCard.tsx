@@ -6,50 +6,36 @@ interface ProfilCardProps {
   limitePostes?: number;
 }
 
-/** Initiales (prénom + nom de famille) utilisées tant que la photo n'est pas disponible. */
-function initiales(nom: string) {
-  const mots = nom
-    .replace(/,.*$/, "")
-    .split(" ")
-    .filter((mot) => /^[A-ZÀ-Ý][a-zà-ÿA-ZÀ-Ý]/.test(mot));
-
-  return [mots[0], mots[mots.length - 1]].map((mot) => mot[0]).join("");
-}
+const PHOTO_PLACEHOLDER =
+  "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=640&q=80";
 
 /**
  * Carte d'identité : portrait, nom, titre et fonctions.
  * Pas d'encadré ombré — la hiérarchie tient au filet vertical et à l'espacement.
  */
 export default function ProfilCard({ limitePostes }: ProfilCardProps) {
-  const [photoIndisponible, setPhotoIndisponible] = useState(false);
+  const [photo, setPhoto] = useState(profil.photo);
 
-  const postes = limitePostes ? profil.postes.slice(0, limitePostes) : profil.postes;
+  const postes = limitePostes
+    ? profil.postes.slice(0, limitePostes)
+    : profil.postes;
   const restants = profil.postes.length - postes.length;
 
   return (
     <div className="grid gap-8 sm:grid-cols-[minmax(0,13rem)_1fr] sm:gap-10">
       <div className="w-40 sm:w-full">
-        {photoIndisponible ? (
-          // TODO: à valider avec Dr SANYA — remplacer par la photo réelle.
-          <div
-            role="img"
-            aria-label={`Portrait de ${profil.nom} — photographie à venir`}
-            className="flex aspect-[4/5] items-center justify-center border border-petrole/20 bg-nuit"
-          >
-            <span className="font-titre text-4xl text-papier/40">{initiales(profil.nom)}</span>
-          </div>
-        ) : (
-          <img
-            src={profil.photo}
-            alt={`Portrait de ${profil.nom}`}
-            onError={() => setPhotoIndisponible(true)}
-            className="aspect-[4/5] w-full border border-petrole/20 object-cover"
-          />
-        )}
+        <img
+          src={photo}
+          alt={`Portrait de ${profil.nom}`}
+          onError={() => setPhoto(PHOTO_PLACEHOLDER)}
+          className="aspect-[4/5] w-full rounded-[5px] border border-petrole/20 object-cover"
+        />
       </div>
 
       <div>
-        <h2 className="font-titre text-2xl leading-tight text-nuit sm:text-3xl">{profil.nom}</h2>
+        <h2 className="font-titre text-2xl leading-tight text-nuit sm:text-3xl">
+          {profil.nom}
+        </h2>
         <p className="mt-2 max-w-[52ch] text-petrole">{profil.titre}</p>
 
         <ul className="mt-6 space-y-2 border-l border-petrole/25 pl-5">

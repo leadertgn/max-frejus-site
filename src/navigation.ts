@@ -7,5 +7,5 @@ export const navigation = [
   { chemin: "/enseignement", libelle: "Enseignement" },
   { chemin: "/encadrement", libelle: "Encadrement" },
   { chemin: "/projets", libelle: "Projets" },
-  { chemin: "/ressources", libelle: "Ressources" },
+  { chemin: "/ressources", libelle: "Tutoriels" },
 ];

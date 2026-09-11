@@ -13,5 +13,5 @@ export { encadrements } from "./encadrements";
 export { formationFttH } from "./formation-ftth";
 export { projetsCommunautaires } from "./projets-communautaires";
 export { soutien } from "./soutien";
-export { hobbies } from "./hobbies";
 export { tutorials } from "./tutorials";
+export { partenaires } from "./partenaires";

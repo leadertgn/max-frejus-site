@@ -9,5 +9,5 @@ export type { Thematique } from "./thematique";
 export type { Formation } from "./formation";
 export type { ProjetCommunautaire } from "./projet-communautaire";
 export type { Soutien } from "./soutien";
-export type { Hobby } from "./hobby";
 export type { Tutorial } from "./tutorial";
+export type { Partenaire } from "./partenaire";
