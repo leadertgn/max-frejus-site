@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { NavLink } from "react-router-dom";
-import { profil } from "../data";
 import { navigation } from "../navigation";
 
 /**
@@ -36,7 +35,7 @@ export default function Header() {
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-8 px-6 py-5 lg:px-10">
         <NavLink to="/" className="font-titre text-lg leading-tight text-nuit">
-          {profil.nom}
+          Max Fréjus O. SANYA, PhD
         </NavLink>
 
         <nav aria-label="Navigation principale" className="hidden lg:block">
